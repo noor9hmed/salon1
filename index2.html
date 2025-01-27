@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Um Atheer Beauty</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f1e9; /* Light beige background */
+            color: #333; /* Main text color */
+        }
+
+        header {
+            background-color: #000; /* Black color */
+            color: #f5f5dc; /* Beige color */
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header img {
+            width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        /* Navigation Buttons */
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+			padding: 10px 20px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #f5f5dc; /* Beige color */
+            background-color: #333; /* Dark background for buttons */
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+			font-size: 1rem;
+        }
+
+        .navigation a:hover {
+            background-color: #f5f5dc;
+            color: #333;
+        }
+
+        .menu-toggle {
+            background-color: #f5f5dc;
+            color: #333;
+            font-size: 1.5em;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            display: block;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+
+        .navigation.vertical {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #000;
+            color: #f5f5dc;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            height: 100%;
+            width: 200px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .navigation.vertical a {
+            text-decoration: none;
+            color: #f5f5dc;
+            background-color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navigation.vertical a:hover {
+            background-color: #f5f5dc;
+            color: #333;
+        }
+
+        .navigation.active {
+            transform: translateX(0);
+        }
+		.menu-toggle {
+            background-color: #000; /* خلفية الزر باللون الأسود */
+            color: #f5f5dc; /* لون الخط باللون البيج */
+            font-size: 1.7em;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            display: block;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+		
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section img {
+            flex: 1 1 40%;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        /* Services Section */
+        .services-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .services-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: #000;
+            color: #f5f5dc;
+            text-align: center;
+            padding: 15px;
+        }
+
+        footer a {
+            color: #f5f5dc;
+            text-decoration: none;
+        }
+
+        /* Working Hours Section */
+        .working-hours {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .working-hours h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .working-hours p {
+            font-size: 1.2em;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .contact-info a {
+            text-decoration: none;
+            background-color: #333;
+            color: #f5f5dc;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .contact-info a:hover {
+            background-color: #f5f5dc;
+            color: #333;
+        }
+
+        /* Location Section */
+        .location {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .location h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .location-box a {
+            text-decoration: none;
+            background-color: #333;
+            color: #f5f5dc;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .location-box a:hover {
+            background-color: #f5f5dc;
+            color: #333;
+        }
+
+        /* Tables Style */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #d6bfa7;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #d6bfa7;
+            color: white;
+        }
+
+        td {
+            background-color: #fff;
+        }
+
+        /* Responsive Images */
+        img {
+            max-width: 70%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            img {
+                max-width: 90%; /* Adjust width for mobile */
+                margin: 0 auto;
+            }
+        }
+		
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <img src="logo.jfif" alt="Logo">
+    <h1>Um Atheer Beauty</h1>
+
+    <!-- Navigation Button -->
+    <button class="menu-toggle">☰</button>
+
+    <!-- Vertical Navigation -->
+    <nav class="navigation vertical">
+        <a href="#home">Home</a>
+        <a href="#about-section">About Us</a>
+        <a href="#services-section">Services</a>
+        <a href="#working-hours">Working Hours</a>
+        <a href="#contact-section">Contact Us</a>
+        <a href="#location-section">Our Location</a>
+    </nav>
+</header>
+
+<!-- Main Content Section -->
+<div class="container">
+    <section id="about-section" class="about-section">
+        <img src="sp.jfif" alt="About">
+        <div>
+            <h2>About the Salon</h2>
+            <p>At Um Atheer Beauty Salon, we offer exceptional beauty services that cater to all aspects of your beauty. With our expert team and the latest techniques, we always strive to provide a unique experience that makes you feel relaxed and beautiful at every moment.</p>
+        </div>
+    </section>
+
+    <section id="services-section" >
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <!-- Service Cards -->
+            <div class="service-card">
+                <h3>Facial</h3>
+                <img src="1.jfif" alt="Facial Service" class="responsive-img">
+
+                <table>
+                    <tr>
+                        <th>خدمة الفيشل</th>
+                        <th>السعر</th>
+                    </tr>
+                    <tr>
+                        <td>فيشل العناية بالبشرة</td>
+                        <td>OMR 15 - 25</td>
+                    </tr>
+                </table>
+			    <table>
+                    <tr>
+                        <th>خدمة برافين</th>
+                        <th>السعر</th>
+                    </tr>
+                    <tr>
+                        <td>برافين اليد</td>
+                        <td>OMR 2</td>
+                    </tr>
+                    <tr>
+                        <td>برافين الرجل</td>
+                        <td>OMR 2</td>
+                    </tr>
+                    <tr>
+                        <td>سبا اليد + برافين اليد</td>
+                        <td>OMR 6</td>
+                    </tr>
+                    <tr>
+                        <td>سبا الرجل + برافين الرجل</td>
+                        <td>OMR 8</td>
+                    </tr>
+                </table>
+            </div>
+		
+			
+
+            <div class="service-card">
+                <h3>Hair Services</h3>
+                <img src="5.jfif" alt="Hair Services"class="responsive-img">
+                <table>
+                    <tr>
+                        <th>خدمات الشعر</th>
+                        <th>السعر</th>
+                    </tr>
+                    <tr>
+                        <td>غسيل الشعر (شامبو + بلسم)</td>
+                        <td>OMR 2</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>لاستشوار مع القص</td>
+                        <td>OMR 7</td>
+                    </tr>
+                    <tr>
+                        <td>قص الشعر مدرج</td>
+                        <td>OMR 5</td>
+                    </tr>
+                    <tr>
+                        <td>قص الأطراف</td>
+                        <td>OMR 1</td>
+                    </tr>
+                    <tr>
+                        <td>قص الغُرة</td>
+                        <td>OMR 0.500</td>
+                    </tr>
+					<tr>
+                        <td>الاستشوار</td>
+                        <td>OMR 5</td>
+                    </tr>
+                    <tr>
+                        <td>بروتين الشعر</td>
+                        <td>OMR 20 - 60</td>
+                    </tr>
+                    <tr>
+                        <td>الصبغات</td>
+                        <td>يبدأ من OMR 10</td>
+                    </tr>
+                </table>
+				<table>
+            <tr>
+                <th>خدمات الواكس</th>
+                <th>السعر</th>
+            </tr>
+            <tr>
+                <td>الجسم كامل</td>
+                <td>OMR 17</td>
+            </tr>
+            <tr>
+                <td>الرجل كامل</td>
+                <td>OMR 4</td>
+            </tr>
+            <tr>
+                <td>اليد كامل</td>
+                <td>OMR 4</td>
+            </tr>
+            <tr>
+                <td>الظهر</td>
+                <td>OMR 3</td>
+            </tr>
+            <tr>
+                <td>الرقبة</td>
+                <td>OMR 2</td>
+            </tr>
+            <tr>
+                <td>البطن</td>
+                <td>OMR 2</td>
+            </tr>
+            <tr>
+                <td>الوجه</td>
+                <td>OMR 1</td>
+            </tr>
+            <tr>
+                <td>الإبط</td>
+                <td>OMR 3</td>
+            </tr>
+        </table>
+            </div>
+
+            <div class="service-card">
+                <h3>Eyelashes</h3>
+                <img src="3.jfif" alt="Eyelash Extensions"class="responsive-img">
+                <table>
+                    <tr>
+                        <th>خدمة الرموش</th>
+                        <th>السعر</th>
+                    </tr>
+                    <tr>
+                        <td>الأطراف</td>
+                        <td>OMR 10</td>
+                    </tr>
+                    <tr>
+                        <td>كامل</td>
+                        <td>OMR 15</td>
+                    </tr>
+                    <tr>
+                        <td>الرموش الروسية</td>
+                        <td>OMR 20</td>
+                    </tr>
+                </table>
+				<table>
+        <tr>
+            <th>خدمة الحواجب</th>
+            <th>السعر</th>
+        </tr>
+        <tr>
+            <td>لون الحواجب</td>
+            <td>OMR 2</td>
+        </tr>
+        <tr>
+            <td>لون عادي</td>
+            <td>OMR 1</td>
+        </tr>
+        <tr>
+            <td>التشقير للحواجب</td>
+            <td>OMR 1</td>
+        </tr>
+        <tr>
+            <td>تشقير الوجه</td>
+            <td>OMR 2</td>
+        </tr>
+    </table>
+            </div>
+
+            <div class="service-card">
+                <h3>Henna</h3>
+                <img src="2.jfif" alt="Henna Services"class="responsive-img">
+                <table>
+                    <tr>
+                        <th>خدمة الحناء</th>
+                        <th>السعر</th>
+                    </tr>
+                    <tr>
+                        <td>العرائس</td>
+                        <td>OMR 100</td>
+                    </tr>
+                    <tr>
+                        <td>اليدين للكوع من الخلف</td>
+                        <td>OMR 10</td>
+                    </tr>
+                    <tr>
+                        <td>اليدين للكوع داخل و خارج</td>
+                        <td>OMR 20</td>
+                    </tr>
+                    <tr>
+                        <td>اليدين الكف</td>
+                        <td>OMR 5</td>
+                    </tr>
+                    <tr>
+                        <td>اليدين الكف داخل و خارج</td>
+                        <td>OMR 10</td>
+                    </tr>
+                    <tr>
+                        <td>القدم</td>
+                        <td>OMR 5</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="service-card">
+                <h3>Nails Services</h3>
+                <img src="4.jfif" alt="Nail Services"class="responsive-img">
+                <table>
+                    <tr>
+                        <th>خدمة الأظافر</th>
+                        <th>السعر</th>
+                    </tr>
+                    <tr>
+                        <td>طلاء الأظافر العادي لليدين</td>
+                        <td>OMR 2</td>
+                    </tr>
+                    <tr>
+                        <td>طلاء الأظافر العادي للرجلين</td>
+                        <td>OMR 2</td>
+                    </tr>
+                    <tr>
+                        <td>طلاء الأظافر جل لليدين</td>
+                        <td>OMR 6</td>
+                    </tr>
+                    <tr>
+                        <td>طلاء الأظافر جل للرجلين</td>
+                        <td>OMR 6</td>
+                    </tr>
+                    <tr>
+                        <td>طلاء الأظافر عادي فرنش</td>
+                        <td>OMR 5</td>
+                    </tr>
+                    <tr>
+                        <td>طلاء الأظافر جل فرنش</td>
+                        <td>OMR 15</td>
+                    </tr>
+                    <tr>
+                        <td>جل اكستنشن</td>
+                        <td>OMR 15</td>
+                    </tr>
+                    <tr>
+                        <td>تركيب أظافر البلاستيك</td>
+                        <td>OMR 10</td>
+                    </tr>
+                    <tr>
+                        <td>الرسم و الديزاين للأظافر</td>
+                        <td>OMR 0.500 - 5</td>
+                    </tr>
+                    <tr>
+                        <td>إزالة الجل</td>
+                        <td>OMR 5</td>
+                    </tr>
+                    <tr>
+                        <td>إزالة البلاستيك التركيب</td>
+                        <td>OMR 5</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Working Hours Section -->
+<div id="working-hours" class="working-hours">
+    <h3>Working Hours</h3>
+    <p>We're open daily from 9 AM to 9 PM. Feel free to visit us anytime!.</p>
+</div>
+
+<!-- Contact Section -->
+<div id="contact-section" class="contact">
+    <h3>Contact Us</h3>
+    <p>For bookings and inquiries, reach out to us on WhatsApp or our Instagram account.</p>
+    <div class="contact-info">
+        <a href="https://wa.me/97279330" target="_blank">Contact via WhatsApp</a>
+    </div>
+</div>
+
+<!-- Location Section -->
+<div id="location-section" class="location">
+    <h3>Our Location</h3>
+    <p>Visit us at our salon:</p>
+    <div class="location-box">
+        <!-- تم تغيير الرابط هنا -->
+        <a href="https://goo.gl/maps/bokKrgdH4nXRsEnE6" target="_blank">Open in Google Maps</a>
+    </div>
+</div>
+
+
+<!-- Footer Section -->
+<footer>
+    <p>Follow us on Instagram: <a href="https://instagram.com/umatheer333" target="_blank">📸 @umatheer333</a></p>
+</footer>
+<script>
+    // Toggle the vertical navigation
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.navigation');
+    
+    menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+
+    // Close the menu when clicking outside of the navigation menu
+    document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+            nav.classList.remove('active');
+        }
+    });
+</script>
+
+
+
+</body>
+</html>
+
+    
+
+
+
